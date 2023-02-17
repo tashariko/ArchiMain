@@ -2,13 +2,14 @@ package com.tasha.archimain.data.source.local.entity
 
 import android.os.Parcelable
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Entity(tableName = "trending_item")
 @Parcelize
-data class LoTrendingItem(
+data class TrendingItem(
 
     @PrimaryKey(autoGenerate = true)
     val localId: Long? = null,

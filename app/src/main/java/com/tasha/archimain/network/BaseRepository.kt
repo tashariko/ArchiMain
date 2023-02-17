@@ -2,10 +2,8 @@ package com.tasha.archimain.network
 
 import com.tasha.archimain.data.ApiResult
 import com.tasha.archimain.data.ErrorType
-import com.tasha.archimain.data.source.local.entity.LoUser
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
-import retrofit2.Response
 
 abstract class BaseRepository<RESULT, REQUEST> {
 

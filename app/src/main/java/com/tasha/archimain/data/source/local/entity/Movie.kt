@@ -1,13 +1,20 @@
-package com.tasha.archimain.data.source.remote.response
+package com.tasha.archimain.data.source.local.entity
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
+@Entity(tableName = "movie")
 @Parcelize
-data class ReMovie(
+data class Movie(
+
+    @PrimaryKey(autoGenerate = true)
+    val localId: Long? = null,
 
     val adult: Boolean,
+
     @SerializedName("backdrop_path")
     val backdropPath: String,
 

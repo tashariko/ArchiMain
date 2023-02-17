@@ -2,6 +2,7 @@ package com.tasha.archimain.data.source.remote.response
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import com.tasha.archimain.data.source.local.entity.TrendingItem
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -28,5 +29,5 @@ data class TrendingItemResponse(
     @SerializedName("total_pages") val totalPages: Long,
     @SerializedName("total_results") val totalResults: Long,
     @SerializedName("page") val page: Long,
-    @SerializedName("results") val results: ArrayList<ReTrendingItem>
+    @SerializedName("results") val results: ArrayList<TrendingItem>
 ) : Parcelable

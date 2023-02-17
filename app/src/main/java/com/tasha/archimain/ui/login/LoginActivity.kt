@@ -10,10 +10,9 @@ import com.tasha.archimain.R
 import com.tasha.archimain.application.AppConstants
 import com.tasha.archimain.application.BaseActivity
 import com.tasha.archimain.data.ApiResult
-import com.tasha.archimain.data.source.local.entity.LoUser
+import com.tasha.archimain.data.source.local.entity.User
 import com.tasha.archimain.databinding.ActivityLoginBinding
 import com.tasha.archimain.ui.MainActivity
-import com.tasha.archimain.ui.splash.LandingActivity
 import com.tasha.archimain.util.UtilityHelper
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -79,7 +78,7 @@ class LoginActivity : BaseActivity() {
         })
     }
 
-    private fun updateUI(data: LoUser) {
+    private fun updateUI(data: User) {
         if(BuildConfig.DEBUG) showToast("Logged in as ${data.name}")
 
         MainActivity.launchScreen(this)

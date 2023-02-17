@@ -12,7 +12,7 @@ import com.tasha.archimain.data.source.local.entity.*
 
 
 @Database(
-    entities = [LoUser::class, LoTrendingItem::class, TrendingRemoteKey::class, LoMovie::class],
+    entities = [User::class, TrendingItem::class, TrendingRemoteKey::class, Movie::class],
     version = 1,
     exportSchema = false
 )

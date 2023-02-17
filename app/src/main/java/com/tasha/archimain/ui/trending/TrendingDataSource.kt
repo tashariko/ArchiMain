@@ -1,9 +1,8 @@
 package com.tasha.archimain.ui.trending
 
 import com.tasha.archimain.data.source.local.dao.TrendingItemDao
-import com.tasha.archimain.data.source.local.entity.LoTrendingItem
+import com.tasha.archimain.data.source.local.entity.TrendingItem
 import com.tasha.archimain.data.source.remote.MiscApiService
-import com.tasha.archimain.data.source.remote.response.ReTrendingItem
 import com.tasha.archimain.network.BaseRemoteDataSource
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -19,12 +18,12 @@ class TrendingRemoteDataSource @Inject constructor(private val service: MiscApiS
 }
 
 class TrendingLocalDataSource @Inject constructor(private val trendingItemDao: TrendingItemDao) {
-     suspend fun saveList(trendingItems: ArrayList<ReTrendingItem>) {
+     suspend fun saveList(trendingItems: ArrayList<TrendingItem>) {
 
-         //trendingItemDao.insertAll(LoTrendingItem.convertToLocal(trendingItems))
+         trendingItemDao.insertAll(trendingItems)
     }
 
-    fun getItems(): Flow<ArrayList<ReTrendingItem>> {
+    fun getItems(): Flow<ArrayList<TrendingItem>> {
         return trendingItemDao.getAllItems()
     }
 }

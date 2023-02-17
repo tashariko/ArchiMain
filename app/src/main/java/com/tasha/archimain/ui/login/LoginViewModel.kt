@@ -9,7 +9,7 @@ import com.tasha.archimain.application.BaseActivity
 import com.tasha.archimain.application.BaseViewModel
 import com.tasha.archimain.data.ApiResult
 import com.tasha.archimain.data.source.USER_LANGUAGE
-import com.tasha.archimain.data.source.local.entity.LoUser
+import com.tasha.archimain.data.source.local.entity.User
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
 import javax.inject.Inject
@@ -18,8 +18,8 @@ import javax.inject.Inject
 class LoginViewModel @Inject constructor(val repository: LoginRepository) : BaseViewModel() {
 
 
-    private val _tempUserLiveData = MutableLiveData<ApiResult<LoUser>>()
-    val createTaskLiveData: LiveData<ApiResult<LoUser>>
+    private val _tempUserLiveData = MutableLiveData<ApiResult<User>>()
+    val createTaskLiveData: LiveData<ApiResult<User>>
         get() = _tempUserLiveData
 
     fun createUser(userName: String, language: String) {

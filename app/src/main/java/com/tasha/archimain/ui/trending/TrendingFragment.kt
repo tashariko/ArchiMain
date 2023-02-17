@@ -11,8 +11,7 @@ import com.tasha.archimain.databinding.FragmentTrendingBinding
 import androidx.fragment.app.viewModels
 import com.tasha.archimain.application.AppConstants
 import com.tasha.archimain.data.ApiResult
-import com.tasha.archimain.data.source.local.entity.LoTrendingItem
-import com.tasha.archimain.data.source.remote.response.ReTrendingItem
+import com.tasha.archimain.data.source.local.entity.TrendingItem
 import com.tasha.archimain.ui.SetMainTitle
 import com.tasha.archimain.util.UtilityHelper
 import dagger.hilt.android.AndroidEntryPoint
@@ -110,7 +109,7 @@ class TrendingFragment @Inject constructor() : BaseFragment() {
         }
     }
 
-    private fun updateUI(data: ArrayList<LoTrendingItem>) {
+    private fun updateUI(data: ArrayList<TrendingItem>) {
 
 
     }

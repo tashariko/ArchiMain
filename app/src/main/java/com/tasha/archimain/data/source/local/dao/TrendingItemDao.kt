@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.tasha.archimain.data.source.local.entity.LoTrendingItem
+import com.tasha.archimain.data.source.local.entity.TrendingItem
 import com.tasha.archimain.data.source.local.entity.TrendingRemoteKey
 import kotlinx.coroutines.flow.Flow
 
@@ -13,10 +13,10 @@ import kotlinx.coroutines.flow.Flow
 interface TrendingItemDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(items: ArrayList<LoTrendingItem>)
+    suspend fun insertAll(items: ArrayList<TrendingItem>)
 
     @Query("SELECT * FROM trending_item")
-    fun getAllItems(): Flow<ArrayList<LoTrendingItem>>
+    fun getAllItems(): Flow<ArrayList<TrendingItem>>
 
     @Query("DELETE FROM trending_item")
     suspend fun clearAllItems()
