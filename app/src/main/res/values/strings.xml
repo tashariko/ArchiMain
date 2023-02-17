@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">Archi Main</string>
+
+    <string name="offlinePageRetry">Retry</string>
+
+
+    <string name="error_layout_loading_text">Getting data, please wait&#8230;</string>
+    <string name="error_layout_sub_text"></string>
+    <string name="generic_error_message">Error occured, try again.</string>
+    <string name="error_layout_error_text">We are not able to connect to internet.</string>
+    <string name="error_layout_error_subtext"></string>
+    <string name="error_layout_no_data_text">No Data Available</string>
+    <string name="error_layout_no_data_subtext"/>
+    <string name="homeScreenOfflineText">Offline</string>
+    <string name="toolbar_movie">Movie</string>
+    <string name="toolbar_series">Series</string>
+    <string name="toolbar_user">User</string>
+    <string name="toolbar_trending">Trending</string>
+    <string name="toolbar_search">Search</string>
+    <string name="retryText">Retry</string>
+    <string name="noDataText">No Data Available</string>
+    <string name="fragment_trending_title">Trending</string>
+    <string name="fragment_user_title">Profile</string>
+    <string name="label_welcome">Welcome to demo app</string>
+    <string name="label_username">Username</string>
+    <string name="label_provide_username">Provide username to proceed.</string>
+    <string name="label_select_language">Select Language:</string>
+    <string name="label_hindi">hi</string>
+    <string name="label_english">en</string>
+    <string name="label_logout">Logout</string>
+    <string name="text_want_to_log_out">Want to logout?</string>
+    <string name="label_yes">YES</string>
+    <string name="label_cancel">Cancel</string>
+</resources>

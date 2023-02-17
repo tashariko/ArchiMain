@@ -1,0 +1,28 @@
+package com.tasha.archimain.ui.trending
+
+import com.tasha.archimain.data.ApiResult
+import com.tasha.archimain.data.source.remote.response.ReTrendingItem
+import com.tasha.archimain.data.source.remote.response.TrendingItemResponse
+import com.tasha.archimain.network.BaseRepository
+import javax.inject.Inject
+
+class TrendingRepository  @Inject constructor(
+    private val localDataSource: TrendingLocalDataSource,
+    private val remoteDataSource: TrendingRemoteDataSource
+) {
+    fun getData(page: Int) = object : BaseRepository<ArrayList<ReTrendingItem>,TrendingItemResponse>() {
+    }.repoWork(
+        databaseQuery = {
+            localDataSource.getItems()
+        },
+        networkCall = {
+            remoteDataSource.getData(page)
+        },
+        saveCallResult = {
+            localDataSource.saveList(it.results)
+        },
+        parseNetworkResponse = {
+            ApiResult.success(it.results)
+        }
+    )
+}
