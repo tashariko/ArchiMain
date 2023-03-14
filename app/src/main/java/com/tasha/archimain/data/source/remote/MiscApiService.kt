@@ -1,7 +1,6 @@
 package com.tasha.archimain.data.source.remote
 
 import com.tasha.archimain.data.source.remote.response.ConfigurationResponse
-import com.tasha.archimain.data.source.remote.response.ReMovie
 import com.tasha.archimain.data.source.remote.response.TrendingItemResponse
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -26,7 +25,5 @@ interface MiscApiService {
 //    @GET("3/tv/{tv_id}")
 //    suspend fun getTvDetail(@Query("tv_id") id: Long): Response<TV>
 
-    @GET("3/movie/{movie_id}")
-    suspend fun getMovieDetail(@Path("movie_id") id: Long): Response<ReMovie>
 
 }

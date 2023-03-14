@@ -13,7 +13,7 @@ class TrendingRepository  @Inject constructor(
     fun getData(page: Int) = object : BaseRepository<ArrayList<TrendingItem>,TrendingItemResponse>() {
     }.repoWork(
         databaseQuery = {
-            localDataSource.getItems()
+            null
         },
         networkCall = {
             remoteDataSource.getData(page)

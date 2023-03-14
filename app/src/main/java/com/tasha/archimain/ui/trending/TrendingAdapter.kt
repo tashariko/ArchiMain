@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.tasha.archimain.R
-import com.tasha.archimain.data.source.local.entity.LoTrendingItem
+import com.tasha.archimain.data.source.local.entity.TrendingItem
 
-class TrendingAdapter(private val dataSet: ArrayList<LoTrendingItem>) : RecyclerView.Adapter<TrendingAdapter.TrendingViewHolder>() {
+class TrendingAdapter(private val dataSet: ArrayList<TrendingItem>) : RecyclerView.Adapter<TrendingAdapter.TrendingViewHolder>() {
 
     /**
      * Provide a reference to the type of views that you are using
@@ -19,7 +19,7 @@ class TrendingAdapter(private val dataSet: ArrayList<LoTrendingItem>) : Recycler
 
         init {
             // Define click listener for the ViewHolder's View
-            textView = view.findViewById(R.id.textView)
+            textView = view.findViewById(R.id.titleView)
         }
     }
 
@@ -36,7 +36,7 @@ class TrendingAdapter(private val dataSet: ArrayList<LoTrendingItem>) : Recycler
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        viewHolder.textView.text = dataSet[position]
+        viewHolder.textView.text = dataSet[position].originalTitle
     }
 
     // Return the size of your dataset (invoked by the layout manager)

@@ -15,8 +15,6 @@ interface TrendingItemDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(items: ArrayList<TrendingItem>)
 
-    @Query("SELECT * FROM trending_item")
-    fun getAllItems(): Flow<ArrayList<TrendingItem>>
 
     @Query("DELETE FROM trending_item")
     suspend fun clearAllItems()
