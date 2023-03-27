@@ -27,33 +27,33 @@ class Converters {
     fun stringToUserLang(string: String) = USER_LANGUAGE.valueOf(string)
 
 
-    @TypeConverter
-    fun fromTrendingItem(item: LoTrendingItem): String {
-        val gson = Gson()
-        val type = object : TypeToken<LoTrendingItem>() {}.type
-        return gson.toJson(item, type)
-    }
-
-    @TypeConverter
-    fun toTrendingItem(string: String): LoTrendingItem {
-        val gson = Gson()
-        val type = object : TypeToken<LoTrendingItem>() {}.type
-        return gson.fromJson(string, type)
-    }
-
-    @TypeConverter
-    fun fromMovie(item: LoMovie): String {
-        val gson = Gson()
-        val type = object : TypeToken<LoMovie>() {}.type
-        return gson.toJson(item, type)
-    }
-
-    @TypeConverter
-    fun toMovie(string: String): LoMovie {
-        val gson = Gson()
-        val type = object : TypeToken<LoMovie>() {}.type
-        return gson.fromJson(string, type)
-    }
+//    @TypeConverter
+//    fun fromTrendingItem(item: LoTrendingItem): String {
+//        val gson = Gson()
+//        val type = object : TypeToken<LoTrendingItem>() {}.type
+//        return gson.toJson(item, type)
+//    }
+//
+//    @TypeConverter
+//    fun toTrendingItem(string: String): LoTrendingItem {
+//        val gson = Gson()
+//        val type = object : TypeToken<LoTrendingItem>() {}.type
+//        return gson.fromJson(string, type)
+//    }
+//
+//    @TypeConverter
+//    fun fromMovie(item: LoMovie): String {
+//        val gson = Gson()
+//        val type = object : TypeToken<LoMovie>() {}.type
+//        return gson.toJson(item, type)
+//    }
+//
+//    @TypeConverter
+//    fun toMovie(string: String): LoMovie {
+//        val gson = Gson()
+//        val type = object : TypeToken<LoMovie>() {}.type
+//        return gson.fromJson(string, type)
+//    }
 
     @TypeConverter
     fun storedLongToList(data: String): ArrayList<Long> {

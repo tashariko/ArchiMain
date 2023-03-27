@@ -10,7 +10,7 @@ class TrendingRepository  @Inject constructor(
     private val localDataSource: TrendingLocalDataSource,
     private val remoteDataSource: TrendingRemoteDataSource
 ) {
-    fun getData(page: Int) = object : BaseRepository<ArrayList<TrendingItem>,TrendingItemResponse>() {
+    fun getData(page: Int) = object : BaseRepository<List<TrendingItem>,TrendingItemResponse>() {
     }.repoWork(
         databaseQuery = {
             localDataSource.getItems()

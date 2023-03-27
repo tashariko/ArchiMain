@@ -17,15 +17,15 @@ class TrendingViewModel @Inject constructor(): ViewModel() {
 
     var dbSupport = false
 
-    private val _tempTrendingListLiveData = MutableLiveData<ApiResult<ArrayList<TrendingItem>>>()
-    val trendingListLiveData: LiveData<ApiResult<ArrayList<TrendingItem>>>
+    private val _tempTrendingListLiveData = MutableLiveData<ApiResult<List<TrendingItem>>>()
+    val trendingListLiveData: LiveData<ApiResult<List<TrendingItem>>>
         get() = _tempTrendingListLiveData
 
     fun fetchTrendingList() {
         viewModelScope.launch {
             try {
                 repository.getData(page = 1).collect {
-                    _tempTrendingListLiveData.postValue(it)
+                    _tempTrendingListLiveData.value = it
                 }
             } catch (ex: Exception) {
                 ex.printStackTrace()

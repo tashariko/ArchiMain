@@ -109,7 +109,7 @@ class TrendingFragment @Inject constructor() : BaseFragment() {
         }
     }
 
-    private fun updateUI(data: ArrayList<TrendingItem>) {
+    private fun updateUI(data: List<TrendingItem>) {
 
 
     }

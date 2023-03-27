@@ -23,7 +23,7 @@ class TrendingLocalDataSource @Inject constructor(private val trendingItemDao: T
          trendingItemDao.insertAll(trendingItems)
     }
 
-    fun getItems(): Flow<ArrayList<TrendingItem>> {
+    fun getItems(): Flow<List<TrendingItem>> {
         return trendingItemDao.getAllItems()
     }
 }

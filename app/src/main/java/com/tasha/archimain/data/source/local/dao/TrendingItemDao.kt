@@ -16,7 +16,7 @@ interface TrendingItemDao {
     suspend fun insertAll(items: ArrayList<TrendingItem>)
 
     @Query("SELECT * FROM trending_item")
-    fun getAllItems(): Flow<ArrayList<TrendingItem>>
+    fun getAllItems(): Flow<List<TrendingItem>>
 
     @Query("DELETE FROM trending_item")
     suspend fun clearAllItems()

@@ -24,7 +24,7 @@ abstract class BaseRemoteDataSource {
 //            val jsonObject: JsonObject = JsonParser().parse(it.string()).asJsonObject
 //            msg = jsonObject.get("err").asString
 //        }
-        return if (msg.isNullOrEmpty()) {
+        return if (!msg.isNullOrEmpty()) {
             ApiResult.error(
                 errorType = ErrorType(
                     ErrorType.Type.Backend,
