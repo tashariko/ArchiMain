@@ -11,6 +11,13 @@ class TrendingRepository  @Inject constructor(
     private val remoteDataSource: TrendingRemoteDataSource
 ) {
     fun getData(page: Int) = object : BaseRepository<List<TrendingItem>,TrendingItemResponse>() {
+        override fun shouldfetchDataFromDbBeforeNetwork(): Boolean {
+           return true
+        }
+
+        override fun shouldStoreDataInDbAfterNetwork(): Boolean {
+            return true
+        }
     }.repoWork(
         databaseQuery = {
             localDataSource.getItems()

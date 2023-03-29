@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.tasha.archimain.data.ApiResult
 import com.tasha.archimain.data.source.local.entity.TrendingItem
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -14,8 +15,6 @@ import javax.inject.Inject
 class TrendingViewModel @Inject constructor(): ViewModel() {
     @Inject
     lateinit var repository: TrendingRepository
-
-    var dbSupport = false
 
     private val _tempTrendingListLiveData = MutableLiveData<ApiResult<List<TrendingItem>>>()
     val trendingListLiveData: LiveData<ApiResult<List<TrendingItem>>>

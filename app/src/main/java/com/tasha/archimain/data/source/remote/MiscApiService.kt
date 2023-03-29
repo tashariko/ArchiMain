@@ -17,7 +17,7 @@ interface MiscApiService {
     @GET("3/configuration")
     suspend fun configuration(): Response<ConfigurationResponse>
 
-    @GET("3/trending/all/week")
+    @GET("3/trending/all/fddweek")
     suspend fun getTrendingItems(
         @Query("page") page: Int,
         @Query("size") pageSize: Int

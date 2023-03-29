@@ -9,6 +9,7 @@ import com.tasha.archimain.R
 import com.tasha.archimain.application.BaseFragment
 import com.tasha.archimain.databinding.FragmentTrendingBinding
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.tasha.archimain.application.AppConstants
 import com.tasha.archimain.data.ApiResult
 import com.tasha.archimain.data.source.local.entity.TrendingItem
@@ -58,7 +59,7 @@ class TrendingFragment @Inject constructor() : BaseFragment() {
         viewModel.trendingListLiveData.observe(viewLifecycleOwner) {
             when (it.status) {
                 ApiResult.Status.LOADING -> {
-                    if (it.data == null) {
+                    if (it.data == null || it.data.isNotEmpty()) {
                         configureView(AppConstants.LOADING_LAYOUT, AppConstants.VIEW_FROM_LOADING)
                     } else {
                         configureView(AppConstants.DATA_LAYOUT, AppConstants.VIEW_FROM_LOADING)
@@ -70,15 +71,15 @@ class TrendingFragment @Inject constructor() : BaseFragment() {
 
                     configureView(AppConstants.DATA_LAYOUT, AppConstants.VIEW_FROM_API)
                 }
-                ApiResult.Status.ERROR -> if (!UtilityHelper.showDataInError()) {
-                    configureView(AppConstants.ERROR_LAYOUT, AppConstants.VIEW_FROM_ERROR)
-                } else {
+                ApiResult.Status.ERROR -> if (UtilityHelper.showDataInError()) {
                     if (it.data == null) {
                         configureView(AppConstants.ERROR_LAYOUT, AppConstants.VIEW_FROM_ERROR)
                     } else {
                         configureView(AppConstants.DATA_LAYOUT, AppConstants.VIEW_FROM_ERROR)
                         updateUI(it.data)
                     }
+                } else {
+                    configureView(AppConstants.ERROR_LAYOUT, AppConstants.VIEW_FROM_ERROR)
                 }
             }
         }
@@ -110,7 +111,7 @@ class TrendingFragment @Inject constructor() : BaseFragment() {
     }
 
     private fun updateUI(data: List<TrendingItem>) {
-
+        binding.textView.text = "${data[0].originalTitle} ++ ${data[0].overview}"
 
     }
 }
