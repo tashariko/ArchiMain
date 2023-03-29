@@ -5,11 +5,10 @@ ArchiMain is a sample android app which show the usage of repository pattern. It
 ## Libraries Used
 * [Android-KTX](https://developer.android.com/kotlin/ktx)
 * [Kotlin](https://kotlinlang.org/docs/reference/android-overview.html)
-* [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html)/[Flow](https://kotlinlang.org/docs/reference/coroutines/flow.html)
-* [Dagger](https://dagger.dev/)
+* [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) with [Flow](https://kotlinlang.org/docs/reference/coroutines/flow.html)
+* [Hilt](https://dagger.dev/hilt/)
 * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
 * [Livedata](https://developer.android.com/topic/libraries/architecture/livedata)
-* [Pagination](https://developer.android.com/topic/libraries/architecture/paging/v3-overview)
 * [Room](https://developer.android.com/topic/libraries/architecture/room)
 * [WorkManager](https://developer.android.com/topic/libraries/architecture/workmanager) - Yet to implement
 * [App startup](https://developer.android.com/topic/libraries/app-startup)  - Yet to implement
@@ -34,7 +33,7 @@ Used api :
 
 
 ##Up Next
-* To merge Local and Remote DTO into one Room entity with extra fields for local Database and extra for remote also.
 * Adapter to implement recyclerview.
+* *TDD
 * CTA to open the detail movie.
 * Option to add CTA for tv also with its api/data logic.
