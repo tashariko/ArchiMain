@@ -18,7 +18,7 @@ class TrendingRemoteDataSource @Inject constructor(private val service: MiscApiS
 }
 
 class TrendingLocalDataSource @Inject constructor(private val trendingItemDao: TrendingItemDao) {
-     suspend fun saveList(trendingItems: ArrayList<TrendingItem>) {
+     suspend fun saveList(trendingItems: List<TrendingItem>) {
 
          trendingItemDao.insertAll(trendingItems)
     }

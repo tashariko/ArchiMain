@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.Flow
 interface TrendingItemDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(items: ArrayList<TrendingItem>)
+    suspend fun insertAll(items: List<TrendingItem>)
 
     @Query("SELECT * FROM trending_item")
     fun getAllItems(): Flow<List<TrendingItem>>
