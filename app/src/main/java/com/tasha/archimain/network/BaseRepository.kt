@@ -12,11 +12,11 @@ abstract class BaseRepository<RESULT, REQUEST> {
         networkCall: suspend () -> ApiResult<REQUEST>,
         saveCallResult: suspend (REQUEST) -> Unit,
         parseNetworkResponse: (REQUEST) -> ApiResult<RESULT>
-    ): Flow<ApiResult<RESULT>> = flow<ApiResult<RESULT>> {
+    ): Flow<ApiResult<RESULT>> = flow {
 
         if (shouldfetchDataFromDbBeforeNetwork()) {
             databaseQuery.invoke()?.let { flow ->
-                emit(ApiResult.loading(flow.single()))
+                emit(ApiResult.loading(flow.first()))
             } ?: run {
                 emit(ApiResult.error<RESULT>(ErrorType(ErrorType.Type.Generic), null))
                 throw Exception("Provide datebaseQuery as shouldfetchDataFromDbBeforeNetwork is true")
@@ -25,7 +25,6 @@ abstract class BaseRepository<RESULT, REQUEST> {
             emit(ApiResult.loading())
         }
 
-        //run it(remoteSource.fetchData()) here on running invoke method
         val responseStatus = networkCall.invoke()
         if (responseStatus.status == ApiResult.Status.SUCCESS) {
             responseStatus.data?.let { req ->
@@ -41,8 +40,7 @@ abstract class BaseRepository<RESULT, REQUEST> {
         } else if (responseStatus.status == ApiResult.Status.ERROR) {
             if (shouldfetchDataFromDbBeforeNetwork()) {
                 databaseQuery.invoke()?.let { flow ->
-                    val source = flow.map { ApiResult.success(it) }
-                    emit(ApiResult.error<RESULT>(responseStatus.errorType, source.first().data))
+                    emit(ApiResult.error<RESULT>(responseStatus.errorType, flow.first()))
                 } ?: run {
                     emit(ApiResult.error<RESULT>(ErrorType(ErrorType.Type.Generic), null))
                     throw Exception("Provide datebaseQuery as shouldfetchDataFromDbBeforeNetwork is true")
@@ -51,7 +49,6 @@ abstract class BaseRepository<RESULT, REQUEST> {
                 emit(ApiResult.error<RESULT>(responseStatus.errorType, null))
             }
         }
-
 
     }.flowOn(Dispatchers.IO).catch { e ->
         emit(ApiResult.error<RESULT>(ErrorType(ErrorType.Type.Generic), null))
