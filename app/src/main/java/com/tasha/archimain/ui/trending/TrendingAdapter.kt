@@ -3,8 +3,10 @@ package com.tasha.archimain.ui.trending
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.tasha.archimain.R
 import com.tasha.archimain.data.source.local.entity.TrendingItem
 
@@ -16,10 +18,14 @@ class TrendingAdapter(private val dataSet: ArrayList<TrendingItem>) : RecyclerVi
      */
     class TrendingViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val textView: TextView
+        val imageView: ImageView
+        val titleView: TextView
 
         init {
             // Define click listener for the ViewHolder's View
             textView = view.findViewById(R.id.overviewView)
+            titleView = view.findViewById(R.id.titleView)
+            imageView = view.findViewById(R.id.imageView)
         }
     }
 
@@ -37,9 +43,19 @@ class TrendingAdapter(private val dataSet: ArrayList<TrendingItem>) : RecyclerVi
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
         viewHolder.textView.text = dataSet[position].originalTitle
+        viewHolder.titleView.text = dataSet[position].overview
+        viewHolder.imageView.load(dataSet[position].posterPath)
+
     }
 
     // Return the size of your dataset (invoked by the layout manager)
-    override fun getItemCount() = dataSet.size
+    override fun getItemCount(): Int {
+        return dataSet.size
+    }
+    fun addData(data: List<TrendingItem>) {
+        dataSet.clear()
+        dataSet.addAll(data)
+        notifyDataSetChanged()
+    }
 
 }
