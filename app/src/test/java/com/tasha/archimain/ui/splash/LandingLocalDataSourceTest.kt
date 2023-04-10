@@ -1,8 +1,9 @@
 package com.tasha.archimain.ui.splash
 
+import android.app.Application
 import android.content.Context
+import androidx.test.core.app.ApplicationProvider
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -19,8 +20,9 @@ import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.robolectric.RobolectricTestRunner
 
-@RunWith(AndroidJUnit4::class)
+@RunWith(RobolectricTestRunner::class)
 class LandingLocalDataSourceTest {
 
     private lateinit var context: Context
@@ -28,38 +30,42 @@ class LandingLocalDataSourceTest {
 
     @Before
     fun setup() {
-        context = getApplicationContext<ArchiMainApplication>()
-        localDataSource = LandingLocalDataSource((context as ArchiMainApplication?)!!)
+        context = getApplicationContext()
+        localDataSource = LandingLocalDataSource((context as Application))
 
         val inputStream = javaClass.classLoader
             .getResourceAsStream("api-response/config-response.json")
         val configString = inputStream.source().buffer().readString(Charsets.UTF_8)
 
-        localDataSource.saveConfiguration(Gson().fromJson<ConfigurationResponse>(configString, object: TypeToken<ConfigurationResponse>() {}.type),AppConstants.SP_KEY_CONFIG_TEST)
+        localDataSource.saveConfiguration(
+            Gson().fromJson<ConfigurationResponse>(
+                configString,
+                object : TypeToken<ConfigurationResponse>() {}.type
+            ), AppConstants.SP_KEY_CONFIG_TEST
+        )
     }
 
     @After
-    fun clearSharedPref(){
+    fun clearSharedPref() {
         SharedPreferenceHelper.clearSharedPrefForKey(context, AppConstants.SP_KEY_CONFIG_TEST)
     }
 
     @Test
-    fun checkConfig(){
-        val configString = SharedPreferenceHelper.getStringFromSharedPreference(context, AppConstants.SP_KEY_CONFIG_TEST)
-        val configurationResponse = Gson().fromJson<ConfigurationResponse>(configString, object: TypeToken<ConfigurationResponse>() {}.type)
+    fun checkConfig() {
+        val configString = SharedPreferenceHelper.getStringFromSharedPreference(
+            context,
+            AppConstants.SP_KEY_CONFIG_TEST
+        )
+        val configurationResponse = Gson().fromJson<ConfigurationResponse>(
+            configString,
+            object : TypeToken<ConfigurationResponse>() {}.type
+        )
 
         assertNotNull(configString)
         MatcherAssert.assertThat(configString, CoreMatchers.not("0"))
-        MatcherAssert.assertThat(configurationResponse.images.base_url,CoreMatchers.containsString("image.tmdb.org"))
-    }
-
-    @Test
-    fun useAppContext() {
-        // Context of the app under test.
-        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals(
-            "com.tasha.archimain", appContext.packageName
+        MatcherAssert.assertThat(
+            configurationResponse.images.base_url,
+            CoreMatchers.containsString("image.tmdb.org")
         )
     }
-
 }

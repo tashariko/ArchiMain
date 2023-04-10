@@ -18,10 +18,11 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
+import org.robolectric.RobolectricTestRunner
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-@RunWith(JUnit4::class)
+@RunWith(RobolectricTestRunner::class)
 class LandingRemoteDataSourceTest: BaseRemoteDataSource() {
 
     private lateinit var landingRemoteDataSource: LandingRemoteDataSource
