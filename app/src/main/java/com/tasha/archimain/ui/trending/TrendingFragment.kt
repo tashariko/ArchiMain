@@ -11,7 +11,6 @@ import com.tasha.archimain.databinding.FragmentTrendingBinding
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.tasha.archimain.application.AppConstants
 import com.tasha.archimain.data.ApiResult
 import com.tasha.archimain.data.source.local.entity.TrendingItem
@@ -28,7 +27,7 @@ class TrendingFragment @Inject constructor() : BaseFragment() {
     private val viewModel: TrendingViewModel by viewModels()
 
     private val adapter by lazy {
-        TrendingAdapter(ArrayList())
+        TrendingAdapter()
     }
 
     override fun onCreateView(
@@ -60,7 +59,7 @@ class TrendingFragment @Inject constructor() : BaseFragment() {
         delegate.setTitle(getString(R.string.fragment_trending_title))
         binding.recyclerView.layoutManager = LinearLayoutManager(activity)
         binding.recyclerView.adapter = adapter
-        binding.errorLoadingContainerView.addDataView(binding.swipeRefreshLayout, javaClass.simpleName)
+        binding.errorLoadingContainerView.addDataView(binding.recyclerView, javaClass.simpleName)
     }
 
     override fun vmListeners() {
