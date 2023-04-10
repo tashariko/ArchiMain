@@ -28,12 +28,10 @@ Used api :
 
 ## In a galaxy far far away
 * Use scoped storage: https://medium.com/better-programming/android-scoped-storage-demystified-3024a062ba24
-* Implement lifecycleowner with handling all lifecycle events
-* Motionlayout with some magical animations
+* Activity result api
 
 
 ##Up Next
-* Adapter to implement recyclerview.
-* *TDD
+* *TDD(on going)
 * CTA to open the detail movie.
 * Option to add CTA for tv also with its api/data logic.
