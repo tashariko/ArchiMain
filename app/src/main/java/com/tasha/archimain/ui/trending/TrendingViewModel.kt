@@ -25,7 +25,7 @@ class TrendingViewModel @Inject constructor(): ViewModel() {
         viewModelScope.launch {
             try {
                 repository.getData(page = 1).collect {
-                    _tempTrendingListLiveData.postValue(it)
+                    _tempTrendingListLiveData.value = it
                 }
             } catch (ex: Exception) {
                 ex.printStackTrace()
