@@ -10,9 +10,9 @@ import javax.inject.Inject
 class LoginLocalDataSource @Inject constructor(
     private val application: Application,
     private val userDao: UserDao
-) : LoginDataSource {
+) {
 
-    override suspend fun createUser(user: User) {
+    suspend fun createUser(user: User) {
         SharedPreferenceHelper.putInSharedPreference(
             application,
             AppConstants.SP_IS_LOGGED_IN, true
@@ -20,8 +20,4 @@ class LoginLocalDataSource @Inject constructor(
 
         userDao.insert(user)
     }
-}
-
-interface LoginDataSource {
-    suspend fun createUser(user: User)
 }

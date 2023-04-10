@@ -1,5 +1,6 @@
 package com.tasha.archimain.ui.splash
 
+import com.tasha.archimain.application.AppConstants
 import com.tasha.archimain.data.ApiResult
 import com.tasha.archimain.data.source.remote.response.ConfigurationResponse
 import com.tasha.archimain.network.BaseRepository
@@ -20,7 +21,7 @@ class LandingRepository @Inject constructor(
             landingRemoteDataSource.getData()
         },
         saveCallResult = {
-            landingLocalDataSource.saveConfiguration(it)
+            landingLocalDataSource.saveConfiguration(it, AppConstants.SP_KEY_CONFIG)
         },
         parseNetworkResponse = {
             ApiResult.success(it)

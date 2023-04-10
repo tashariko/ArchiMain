@@ -4,6 +4,7 @@ object AppConstants {
     const val DATABASE_NAME = "ArchiMain.db"
     const val SP_FILE_KEY = "archiMainPreferences"
     const val SP_KEY_CONFIG = "spKeyConfig"
+    const val SP_KEY_CONFIG_TEST = "spKeyConfigTest"
     const val SP_IS_LOGGED_IN = "spIsLogedIn";
 
     //Error Loading View
