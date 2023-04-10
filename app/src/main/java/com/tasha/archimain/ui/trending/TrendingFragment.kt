@@ -10,6 +10,7 @@ import com.tasha.archimain.application.BaseFragment
 import com.tasha.archimain.databinding.FragmentTrendingBinding
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.tasha.archimain.application.AppConstants
 import com.tasha.archimain.data.ApiResult
 import com.tasha.archimain.data.source.local.entity.TrendingItem
@@ -24,6 +25,10 @@ class TrendingFragment @Inject constructor() : BaseFragment() {
     lateinit var delegate: SetMainTitle
 
     private val viewModel: TrendingViewModel by viewModels()
+
+    private val adapter by lazy{
+        TrendingAdapter()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -52,6 +57,8 @@ class TrendingFragment @Inject constructor() : BaseFragment() {
 
     override fun bindAndSetupUI() {
         delegate.setTitle(getString(R.string.fragment_trending_title))
+        binding.recyclerView.layoutManager = LinearLayoutManager(activity)
+        binding.recyclerView.adapter = adapter
         binding.errorLoadingContainerView.addDataView(binding.swipeRefreshLayout, javaClass.simpleName)
     }
 
@@ -110,8 +117,7 @@ class TrendingFragment @Inject constructor() : BaseFragment() {
         }
     }
 
-    private fun updateUI(data: List<TrendingItem>) {
-        binding.textView.text = "${data[0].originalTitle} ++ ${data[0].overview}"
-
+    private fun updateUI(data: ArrayList<TrendingItem>) {
+        adapter.updateData(data)
     }
 }

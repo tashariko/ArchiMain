@@ -20,7 +20,7 @@ class TrendingRepository  @Inject constructor(
         }
     }.repoWork(
         databaseQuery = {
-            localDataSource.getItems()
+            null
         },
         networkCall = {
             remoteDataSource.getData(page)
