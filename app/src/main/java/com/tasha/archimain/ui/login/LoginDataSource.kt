@@ -11,10 +11,12 @@ class LoginLocalDataSource @Inject constructor(
     private val application: Application,
     private val userDao: UserDao
 ) {
+
     suspend fun createUser(user: User) {
         SharedPreferenceHelper.putInSharedPreference(
             application,
-            AppConstants.SP_IS_LOGGED_IN,true)
+            AppConstants.SP_IS_LOGGED_IN, true
+        )
 
         userDao.insert(user)
     }

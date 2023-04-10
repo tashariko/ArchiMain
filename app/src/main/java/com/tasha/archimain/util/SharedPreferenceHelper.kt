@@ -8,6 +8,7 @@ import com.tasha.archimain.application.AppConstants.SP_FILE_KEY
 import timber.log.Timber
 
 object SharedPreferenceHelper {
+
     private fun getSharedPreferencesObject(context: Context): SharedPreferences {
         return context.getSharedPreferences(SP_FILE_KEY, Context.MODE_PRIVATE)
     }

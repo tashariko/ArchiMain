@@ -18,11 +18,12 @@ class LandingRemoteDataSource @Inject constructor(private val service: MiscApiSe
     }
 }
 
+
 class LandingLocalDataSource @Inject constructor(private val application: Application) {
-     fun saveConfiguration(config: ConfigurationResponse) {
+     fun saveConfiguration(config: ConfigurationResponse,key: String) {
          SharedPreferenceHelper.putInSharedPreference(
              application,
-             AppConstants.SP_KEY_CONFIG,
+             key,
              Gson().toJson(config, object: TypeToken<ConfigurationResponse>() {}.type)
          )
     }

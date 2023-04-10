@@ -6,7 +6,6 @@ import com.tasha.archimain.data.source.local.entity.User
 import com.tasha.archimain.network.BaseRepository
 import javax.inject.Inject
 
-
 class LoginRepository  @Inject constructor(
     private val localDataSource: LoginLocalDataSource
 ){
