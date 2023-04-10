@@ -47,7 +47,7 @@ class TrendingAdapter : RecyclerView.Adapter<TrendingAdapter.TrendingViewHolder>
 
     override fun getItemCount() = dataSet.size
 
-    fun updateData(data: java.util.ArrayList<TrendingItem>) {
+    fun updateData(data: List<TrendingItem>) {
         dataSet.clear()
         dataSet.addAll(data)
         notifyItemRangeChanged(0,dataSet.size)

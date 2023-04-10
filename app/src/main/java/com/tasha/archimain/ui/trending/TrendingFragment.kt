@@ -9,7 +9,6 @@ import com.tasha.archimain.R
 import com.tasha.archimain.application.BaseFragment
 import com.tasha.archimain.databinding.FragmentTrendingBinding
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tasha.archimain.application.AppConstants
 import com.tasha.archimain.data.ApiResult
@@ -117,7 +116,7 @@ class TrendingFragment @Inject constructor() : BaseFragment() {
         }
     }
 
-    private fun updateUI(data: ArrayList<TrendingItem>) {
+    private fun updateUI(data: List<TrendingItem>) {
         adapter.updateData(data)
     }
 }
