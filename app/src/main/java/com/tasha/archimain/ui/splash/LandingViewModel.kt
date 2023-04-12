@@ -11,10 +11,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class LandingViewModel @Inject constructor() : ViewModel() {
-
-    @Inject
-    lateinit var repository: LandingRepository
+class LandingViewModel @Inject constructor(var repository: LandingRepository) : ViewModel() {
 
     private val _tempConfigLiveData = MutableLiveData<ApiResult<ConfigurationResponse>>()
     val configLiveData: LiveData<ApiResult<ConfigurationResponse>>

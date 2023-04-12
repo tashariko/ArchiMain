@@ -75,16 +75,13 @@ class LandingRemoteDataSourceTest: BaseRemoteDataSource() {
     }
 
     private fun enqueueResponse(fileName: String, headers: Map<String, String> = emptyMap(), responseCode: Int = 200) {
-        val inputStream = javaClass.classLoader
-            .getResourceAsStream("api-response/$fileName")
-        val source = inputStream.source().buffer()
         val mockResponse = MockResponse()
         for ((key, value) in headers) {
             mockResponse.addHeader(key, value)
         }
         mockWebServer.enqueue(
             mockResponse.setBody(
-                source.readString(Charsets.UTF_8)
+                GetConfigFromFile.getdataAsString(fileName)
             ).setResponseCode(responseCode)
         )
     }

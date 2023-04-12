@@ -33,13 +33,11 @@ class LandingLocalDataSourceTest {
         context = getApplicationContext()
         localDataSource = LandingLocalDataSource((context as Application))
 
-        val inputStream = javaClass.classLoader
-            .getResourceAsStream("api-response/config-response.json")
-        val configString = inputStream.source().buffer().readString(Charsets.UTF_8)
+
 
         localDataSource.saveConfiguration(
             Gson().fromJson<ConfigurationResponse>(
-                configString,
+                GetConfigFromFile.getdataAsString("config-response.json"),
                 object : TypeToken<ConfigurationResponse>() {}.type
             ), AppConstants.SP_KEY_CONFIG_TEST
         )
