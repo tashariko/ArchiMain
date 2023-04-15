@@ -13,6 +13,10 @@ import com.tasha.archimain.BuildConfig
 import com.tasha.archimain.application.AppConstants
 import com.tasha.archimain.data.source.local.AppDatabase
 import com.tasha.archimain.network.RequestInterceptor
+import com.tasha.archimain.ui.splash.BaseLandingRepository
+import com.tasha.archimain.ui.splash.LandingLocalDataSource
+import com.tasha.archimain.ui.splash.LandingRemoteDataSource
+import com.tasha.archimain.ui.splash.LandingRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -83,5 +87,21 @@ class AppModule {
             .client(okHttpClient)
             .build()
     }
-
 }
+
+@Module
+@InstallIn(SingletonComponent::class)
+object LandingRepositoryModule {
+
+    @Singleton
+    @Provides
+    fun provideLandingRepository(
+        localDataSource: LandingLocalDataSource,
+        remoteDataSource: LandingRemoteDataSource
+    ): BaseLandingRepository {
+        return LandingRepository(
+            remoteDataSource, localDataSource
+        )
+    }
+}
+

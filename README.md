@@ -8,7 +8,8 @@ ArchiMain is a sample android app which show the usage of repository pattern. It
 * [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) with [Flow](https://kotlinlang.org/docs/reference/coroutines/flow.html)
 * [Hilt](https://dagger.dev/hilt/)
 * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
-* [Livedata](https://developer.android.com/topic/libraries/architecture/livedata)
+* ~~[Livedata](https://developer.android.com/topic/libraries/architecture/livedata)~~
+* [Kotlin-Flow](https://developer.android.com/kotlin/flow)
 * [Room](https://developer.android.com/topic/libraries/architecture/room)
 * [WorkManager](https://developer.android.com/topic/libraries/architecture/workmanager) - Yet to implement
 * [App startup](https://developer.android.com/topic/libraries/app-startup)  - Yet to implement
@@ -37,3 +38,8 @@ Used api :
 * *TDD
 * CTA to open the detail movie.
 * Option to add CTA for tv also with its api/data logic.
+
+##Some important Guides for kotlin-flow:
+https://medium.com/swlh/migrating-from-livedata-to-stateflow-4f28d6889a04
+https://elizarov.medium.com/execution-context-of-kotlin-flows-b8c151c9309b
+https://bladecoder.medium.com/kotlins-flow-in-viewmodels-it-s-complicated-556b472e281a

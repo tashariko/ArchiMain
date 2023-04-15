@@ -7,24 +7,39 @@ import androidx.lifecycle.viewModelScope
 import com.tasha.archimain.data.ApiResult
 import com.tasha.archimain.data.source.remote.response.ConfigurationResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class LandingViewModel @Inject constructor() : ViewModel() {
+class LandingViewModel @Inject constructor(var repository: BaseLandingRepository) : ViewModel() {
 
-    @Inject
-    lateinit var repository: LandingRepository
+    private val _tempConfigLiveData = MutableStateFlow(ApiResult.loading<ConfigurationResponse>())
+    val configLiveData = _tempConfigLiveData
 
-    private val _tempConfigLiveData = MutableLiveData<ApiResult<ConfigurationResponse>>()
-    val configLiveData: LiveData<ApiResult<ConfigurationResponse>>
-        get() = _tempConfigLiveData
+//    fun getConfig() {
+//        viewModelScope.launch {
+//            try {
+//                repository.getData().collect {
+//                    _tempConfigLiveData.emit(it)
+//                }
+//            } catch (ex: Exception) {
+//                ex.printStackTrace()
+//            }
+//        }
+//
+//    }
+
+    private val _tempConfigLiveData1 = MutableLiveData<ApiResult<ConfigurationResponse>>()
+    val configLiveData1: LiveData<ApiResult<ConfigurationResponse>>
+        get() = _tempConfigLiveData1
 
     fun getConfig() {
         viewModelScope.launch {
             try {
                 repository.getData().collect {
-                    _tempConfigLiveData.postValue(it)
+                    _tempConfigLiveData1.postValue(it)
                 }
             } catch (ex: Exception) {
                 ex.printStackTrace()

@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import com.tasha.archimain.R
 import com.tasha.archimain.application.AppConstants
 import com.tasha.archimain.application.BaseActivity
@@ -51,39 +52,42 @@ class LandingActivity : BaseActivity() {
     }
 
     override fun vmListeners() {
-        viewModel.configLiveData.observe(this) {
-            binding.progressBar.isVisible = false
-            binding.retryButton.isVisible = false
-            when (it.status) {
-                ApiResult.Status.LOADING -> {
-                    binding.progressBar.isVisible = true
-                }
-                ApiResult.Status.SUCCESS -> {
-                    if (SharedPreferenceHelper.getBooleanFromSharedPreference(
-                            this,
-                            AppConstants.SP_IS_LOGGED_IN
-                        )
-                    ) {
-                        MainActivity.launchScreen(this@LandingActivity)
-                    } else {
-                        LoginActivity.launchLoginScreen(this@LandingActivity)
+
+        lifecycleScope.launchWhenStarted {
+            viewModel.configLiveData.collect {
+                binding.progressBar.isVisible = false
+                binding.retryButton.isVisible = false
+                when (it.status) {
+                    ApiResult.Status.LOADING -> {
+                        binding.progressBar.isVisible = true
                     }
-                }
-                ApiResult.Status.ERROR -> {
-                    it.errorType?.let { et ->
-                        if (et.type == ErrorType.Type.Generic) {
-                            showToast(getString(R.string.generic_error_message))
+                    ApiResult.Status.SUCCESS -> {
+                        if (SharedPreferenceHelper.getBooleanFromSharedPreference(
+                                this@LandingActivity,
+                                AppConstants.SP_IS_LOGGED_IN
+                            )
+                        ) {
+                            MainActivity.launchScreen(this@LandingActivity)
                         } else {
-                            et.message?.let { msg ->
-                                showToast(msg)
-                            } ?: run {
-                                showToast(getString(R.string.generic_error_message))
-                            }
+                            LoginActivity.launchLoginScreen(this@LandingActivity)
                         }
-                    } ?: run {
-                        showToast(getString(R.string.generic_error_message))
                     }
-                    binding.retryButton.isVisible = true
+                    ApiResult.Status.ERROR -> {
+                        it.errorType?.let { et ->
+                            if (et.type == ErrorType.Type.Generic) {
+                                showToast(getString(R.string.generic_error_message))
+                            } else {
+                                et.message?.let { msg ->
+                                    showToast(msg)
+                                } ?: run {
+                                    showToast(getString(R.string.generic_error_message))
+                                }
+                            }
+                        } ?: run {
+                            showToast(getString(R.string.generic_error_message))
+                        }
+                        binding.retryButton.isVisible = true
+                    }
                 }
             }
         }
