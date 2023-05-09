@@ -18,6 +18,8 @@ ArchiMain is a sample android app which show the usage of repository pattern. It
 * [Timber](https://github.com/JakeWharton/timber)
 * [Stetho](http://facebook.github.io/stetho/)
 * [Chuck](https://github.com/jgilfelt/chuck)
+* [Lint-Baseline](https://medium.com/swlh/what-is-android-lint-17fa0d87abb2)
+* [Lints](https://googlesamples.github.io/android-custom-lint-rules/usage/baselines.md.html#:~:text=If%20you%20want%20to%20create,location%20of%20the%20lint%2Dbaseline)
 
 Used api :
 [Movie-db](https://developers.themoviedb.org/3/)

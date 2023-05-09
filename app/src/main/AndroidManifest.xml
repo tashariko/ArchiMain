@@ -17,7 +17,7 @@
         android:theme="@style/Theme.ArchiMain"
         tools:targetApi="31">
         <activity
-            android:name="com.tasha.archimain.ui.splash.SplashActivity"
+            android:name=".ui.splash.SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.ArchiMain">
             <intent-filter>

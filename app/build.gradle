@@ -43,9 +43,9 @@ android {
     lintOptions {
         checkReleaseBuilds false
         abortOnError false
+        //To ignore the existing lint issues.
+        baseline file("lint-baseline.xml")
     }
-
-
 }
 
 dependencies {
