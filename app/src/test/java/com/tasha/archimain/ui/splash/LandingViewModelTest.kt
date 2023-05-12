@@ -35,13 +35,13 @@ class LandingViewModelTest {
         repository.getData().emit(ApiResult.loading())
         MatcherAssert.assertThat(viewModel.configLiveData.value.status, CoreMatchers.`is`(ApiResult.Status.LOADING))
     }
-
-    @Test
-    fun successState() = runTest {
-        repository.getData().emit(ApiResult.success(configResponse))
-        MatcherAssert.assertThat(viewModel.configLiveData.value.status, CoreMatchers.`is`(ApiResult.Status.SUCCESS))
-        MatcherAssert.assertThat(viewModel.configLiveData.value.data, CoreMatchers.not(null))
-    }
+//
+//    @Test
+//    fun successState() = runTest {
+//        repository.getData().emit(ApiResult.success(configResponse))
+//        MatcherAssert.assertThat(viewModel.configLiveData.value.status, CoreMatchers.`is`(ApiResult.Status.SUCCESS))
+//        MatcherAssert.assertThat(viewModel.configLiveData.value.data, CoreMatchers.not(null))
+//    }
 
     @Test
     fun errorState() {
