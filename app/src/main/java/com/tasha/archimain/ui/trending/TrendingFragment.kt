@@ -38,8 +38,6 @@ class TrendingFragment @Inject constructor() : BaseFragment() {
     ): View {
         binding = FragmentTrendingBinding.inflate(inflater, container, false)
         rootview = binding.root
-        bindAndSetupUI()
-        vmListeners()
         return rootview
     }
 
@@ -50,6 +48,12 @@ class TrendingFragment @Inject constructor() : BaseFragment() {
         } catch (e: ClassCastException) {
             throw ClassCastException(activity.toString() + " must implement SetMainTitle")
         }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        bindAndSetupUI()
+        vmListeners()
     }
 
     override fun handleIncomingIntent() {
