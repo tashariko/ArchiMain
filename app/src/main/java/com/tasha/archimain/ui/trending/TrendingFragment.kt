@@ -2,6 +2,7 @@ package com.tasha.archimain.ui.trending
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -63,7 +64,7 @@ class TrendingFragment @Inject constructor() : BaseFragment() {
     }
 
     override fun vmListeners() {
-        viewModel.trendingListLiveData.observe(viewLifecycleOwner) {
+        viewModel.trendingLiveData.observe(viewLifecycleOwner) {
             when (it.status) {
                 ApiResult.Status.LOADING -> {
                     if (it.data == null || it.data.isNotEmpty()) {

@@ -4,7 +4,6 @@ import android.app.Application
 import androidx.room.Room
 import com.tasha.archimain.application.AppConstants.DATABASE_NAME
 import com.tasha.archimain.data.source.local.*
-import com.tasha.archimain.data.source.local.dao.MovieDao
 import com.tasha.archimain.data.source.local.dao.TrendingItemDao
 import com.tasha.archimain.data.source.local.dao.TrendingRemoteKeysDao
 import com.tasha.archimain.data.source.local.dao.UserDao
@@ -40,10 +39,6 @@ class DbModule {
     @Singleton
     fun provideTrendingItemDao(appDatabase: AppDatabase): TrendingItemDao =
         appDatabase.trendingItemDao()
-
-    @Provides
-    @Singleton
-    fun provideMovieDao(appDatabase: AppDatabase): MovieDao = appDatabase.movieDao()
 
     @Provides
     @Singleton

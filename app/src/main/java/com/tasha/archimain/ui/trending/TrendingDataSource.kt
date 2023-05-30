@@ -12,14 +12,17 @@ val DEFAULT_TRENIND_PAGE_SIZE = 100
 class TrendingRemoteDataSource @Inject constructor(private val service: MiscApiService) :
     BaseRemoteDataSource() {
 
-    suspend fun getData(page: Int) = getResult {
-        service.getTrendingItems(page, DEFAULT_TRENIND_PAGE_SIZE)
+    suspend fun getMovieData(page: Int) = getResult {
+        service.getTrendingMovieItems(page, DEFAULT_TRENIND_PAGE_SIZE)
+    }
+
+    suspend fun getTvData(page: Int) = getResult {
+        service.getTrendingTvItems(page, DEFAULT_TRENIND_PAGE_SIZE)
     }
 }
 
 class TrendingLocalDataSource @Inject constructor(private val trendingItemDao: TrendingItemDao) {
      suspend fun saveList(trendingItems: List<TrendingItem>) {
-
          trendingItemDao.insertAll(trendingItems)
     }
 
