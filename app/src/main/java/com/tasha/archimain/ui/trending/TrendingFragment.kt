@@ -2,7 +2,6 @@ package com.tasha.archimain.ui.trending
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +10,6 @@ import com.tasha.archimain.application.BaseFragment
 import com.tasha.archimain.databinding.FragmentTrendingBinding
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.lifecycle.lifecycleScope
 import com.tasha.archimain.application.AppConstants
 import com.tasha.archimain.data.ApiResult
 import com.tasha.archimain.data.source.local.entity.TrendingItem

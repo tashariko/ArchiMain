@@ -9,15 +9,15 @@ import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
 class TrendingUseCase @Inject constructor(
-    val movieRepository: MovieRepository,
-    val tvRepository: TvRepository
+    private val movieRepository: MovieRepository,
+    private val tvRepository: TvRepository
 ){
 
     fun getData(page: Int): Flow<ApiResult<List<TrendingItem>>> {
         val movieStream = movieRepository.getMovieData(page)
         val tvStream = tvRepository.getTVData(page)
 
-        return combine(movieStream, tvStream){ movie, tv ->
+        return combine(movieStream, tvStream) { movie, tv ->
             val list = ArrayList<TrendingItem>()
             movie.data?.let{
                 list.addAll(it)

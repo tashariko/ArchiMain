@@ -19,7 +19,7 @@ class TrendingViewModel @Inject constructor(): ViewModel() {
     fun fetchTrendingList() {
         viewModelScope.launch {
             try {
-                trendingUseCase.getData(DEFAULT_TRENIND_PAGE_SIZE).collect{
+                trendingUseCase.getData(DEFAULT_TRENING_PAGE_SIZE).collect{
                     _tempTrendingLiveData.value = it
                 }
             } catch (ex: Exception) {

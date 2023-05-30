@@ -7,17 +7,17 @@ import com.tasha.archimain.network.BaseRemoteDataSource
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-val DEFAULT_TRENIND_PAGE_SIZE = 100
+val DEFAULT_TRENING_PAGE_SIZE = 100
 
 class TrendingRemoteDataSource @Inject constructor(private val service: MiscApiService) :
     BaseRemoteDataSource() {
 
     suspend fun getMovieData(page: Int) = getResult {
-        service.getTrendingMovieItems(page, DEFAULT_TRENIND_PAGE_SIZE)
+        service.getTrendingMovieItems(page, DEFAULT_TRENING_PAGE_SIZE)
     }
 
     suspend fun getTvData(page: Int) = getResult {
-        service.getTrendingTvItems(page, DEFAULT_TRENIND_PAGE_SIZE)
+        service.getTrendingTvItems(page, DEFAULT_TRENING_PAGE_SIZE)
     }
 }
 
