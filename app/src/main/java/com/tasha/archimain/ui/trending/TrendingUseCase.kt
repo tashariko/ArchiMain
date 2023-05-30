@@ -14,10 +14,10 @@ class TrendingUseCase @Inject constructor(
 ){
 
     fun getData(page: Int): Flow<ApiResult<List<TrendingItem>>> {
-        val movieLiveData = movieRepository.getMovieData(page)
-        val tvLiveData = tvRepository.getTVData(page)
+        val movieStream = movieRepository.getMovieData(page)
+        val tvStream = tvRepository.getTVData(page)
 
-        return combine(movieLiveData, tvLiveData){ movie, tv ->
+        return combine(movieStream, tvStream){ movie, tv ->
             val list = ArrayList<TrendingItem>()
             movie.data?.let{
                 list.addAll(it)
