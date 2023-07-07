@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/parentView"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/buttonDisabled"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/_10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:adjustViewBounds="true"
+        android:minHeight="@dimen/_50dp"
+        android:background="@color/textLightColor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/titleView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/appTextColor"
+        android:textStyle="bold"
+        android:text="Title"
+        android:layout_marginStart="@dimen/_15dp"
+        android:textSize="@dimen/font_big"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imageView" />
+
+    <TextView
+        android:id="@+id/overviewView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/textLightColor"
+        android:text="overview"
+        android:textSize="@dimen/font_normal"
+        android:layout_marginTop="@dimen/_5dp"
+        android:layout_marginStart="@dimen/_15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleView"
+        app:layout_constraintStart_toEndOf="@id/imageView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
