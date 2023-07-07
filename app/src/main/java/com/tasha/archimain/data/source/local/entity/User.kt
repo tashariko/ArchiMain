@@ -27,7 +27,6 @@ data class User(
     @SerializedName("registeredAt")
     val registeredAt: String
 ) : Parcelable {
-
     override fun toString() = name
 }
 

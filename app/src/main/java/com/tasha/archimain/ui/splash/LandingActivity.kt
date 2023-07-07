@@ -14,6 +14,7 @@ import com.tasha.archimain.data.ErrorType
 import com.tasha.archimain.databinding.ActivityLandingBinding
 import com.tasha.archimain.ui.MainActivity
 import com.tasha.archimain.ui.login.LoginActivity
+import com.tasha.archimain.ui.parallelflow.ParallelFlowActivity
 import com.tasha.archimain.util.SharedPreferenceHelper
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -64,7 +65,14 @@ class LandingActivity : BaseActivity() {
                             AppConstants.SP_IS_LOGGED_IN
                         )
                     ) {
-                        MainActivity.launchScreen(this@LandingActivity)
+                        if(!SharedPreferenceHelper.getBooleanFromSharedPreference(
+                                this,
+                                AppConstants.SP_IS_SECOND_FLOW
+                            )) {
+                            ParallelFlowActivity.launchScreen(this@LandingActivity)
+                        }else{
+                            MainActivity.launchScreen(this@LandingActivity)
+                        }
                     } else {
                         LoginActivity.launchLoginScreen(this@LandingActivity)
                     }

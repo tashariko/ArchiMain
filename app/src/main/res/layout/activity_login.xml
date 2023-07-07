@@ -109,6 +109,35 @@
                 android:textColor="@color/colorPrimaryDark" />
 
         </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/btn_send1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:padding="@dimen/_5dp"
+                android:src="@drawable/ic_send" />
+
+
+            <EditText
+                android:id="@+id/et_username1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/_10dp"
+                android:layout_toStartOf="@id/btn_send1"
+                android:hint="@string/for_parallel_calls"
+                android:inputType="textCapWords"
+                android:maxLines="1"
+                android:minLines="1"
+                android:textColor="@color/colorPrimaryDark" />
+
+        </RelativeLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

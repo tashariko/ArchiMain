@@ -31,4 +31,5 @@
     <string name="text_want_to_log_out">Want to logout?</string>
     <string name="label_yes">YES</string>
     <string name="label_cancel">Cancel</string>
+    <string name="for_parallel_calls">For Parallel calls</string>
 </resources>

@@ -13,6 +13,8 @@ import com.tasha.archimain.data.ApiResult
 import com.tasha.archimain.data.source.local.entity.User
 import com.tasha.archimain.databinding.ActivityLoginBinding
 import com.tasha.archimain.ui.MainActivity
+import com.tasha.archimain.ui.parallelflow.ParallelFlowActivity
+import com.tasha.archimain.util.SharedPreferenceHelper
 import com.tasha.archimain.util.UtilityHelper
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -43,6 +45,20 @@ class LoginActivity : BaseActivity() {
                 if(isNullOrEmpty()){
                     showToast(getString(R.string.label_provide_username))
                 }else{
+                    SharedPreferenceHelper.putInSharedPreference(
+                        this@LoginActivity,AppConstants.SP_IS_SECOND_FLOW, viewModel.isSecondFlow
+                    )
+                    viewModel.createUser(this, viewModel.getLanguage(this@LoginActivity, binding.rgLanguage))
+                }
+            }
+        }
+
+        binding.btnSend1.setOnClickListener{
+            with(binding.etUsername1.text.toString().trim()){
+                if(isNullOrEmpty()){
+                    showToast(getString(R.string.label_provide_username))
+                }else{
+                    viewModel.isSecondFlow = true
                     viewModel.createUser(this, viewModel.getLanguage(this@LoginActivity, binding.rgLanguage))
                 }
             }
@@ -81,7 +97,11 @@ class LoginActivity : BaseActivity() {
     private fun updateUI(data: User) {
         if(BuildConfig.DEBUG) showToast("Logged in as ${data.name}")
 
-        MainActivity.launchScreen(this)
+        if(!viewModel.isSecondFlow) {
+            MainActivity.launchScreen(this)
+        }else{
+            ParallelFlowActivity.launchScreen(this)
+        }
     }
 
     private fun configureView(loadingLayout: String, viewFromLoading: String) {

@@ -7,8 +7,9 @@ import androidx.fragment.app.Fragment
 import com.tasha.archimain.R
 import com.tasha.archimain.application.BaseActivity
 import com.tasha.archimain.databinding.ActivityMainBinding
-import com.tasha.archimain.ui.trending.TrendingFragment
-import com.tasha.archimain.ui.user.UserFragment
+import com.tasha.archimain.ui.mainflow.trending.TrendingFragment
+import com.tasha.archimain.ui.mainflow.user.UserFragment
+import com.tasha.archimain.ui.parallelflow.ParallelFlowActivity
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -25,8 +26,10 @@ class MainActivity : BaseActivity(), SetMainTitle {
 
     companion object {
         fun launchScreen(context: Context) {
+            var intent = Intent(context, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
             context.startActivity(Intent(context, MainActivity::class.java))
-            (context as BaseActivity).finish()
         }
     }
 

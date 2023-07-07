@@ -6,6 +6,7 @@ object AppConstants {
     const val SP_KEY_CONFIG = "spKeyConfig"
     const val SP_KEY_CONFIG_TEST = "spKeyConfigTest"
     const val SP_IS_LOGGED_IN = "spIsLogedIn";
+    const val SP_IS_SECOND_FLOW = "spIsSecondFlow";
 
     //Error Loading View
     const val NO_DATA_LAYOUT = "No-Data-Layout"
