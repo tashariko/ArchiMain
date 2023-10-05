@@ -1,6 +1,6 @@
 # ArchiMain
 
-ArchiMain is a sample android app which show the usage of repository pattern. It implements Clean Architecture with latest android trends.
+ArchiMain is a sample android app which show the usage of repository pattern. It implements Clean Architecture with latest android trends. Here I have come up with a new way for the [Repository](https://github.com/tashariko/ArchiMain/blob/main/app/src/main/java/com/tasha/archimain/ui/movie/MovieRepository.kt) by creating a new class which handles everything related to data i.e. [BaseRepository](https://github.com/tashariko/ArchiMain/blob/main/app/src/main/java/com/tasha/archimain/network/BaseRepository.kt).
 
 ## Libraries Used
 * [Android-KTX](https://developer.android.com/kotlin/ktx)
