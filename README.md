@@ -10,9 +10,6 @@ ArchiMain is a sample android app which show the usage of repository pattern. It
 * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
 * [Livedata](https://developer.android.com/topic/libraries/architecture/livedata)
 * [Room](https://developer.android.com/topic/libraries/architecture/room)
-* [WorkManager](https://developer.android.com/topic/libraries/architecture/workmanager) - Yet to implement
-* [App startup](https://developer.android.com/topic/libraries/app-startup)  - Yet to implement
-* [Data store](https://developer.android.com/topic/libraries/architecture/datastore) - Yet to implement
 * [Retrofit2](https://square.github.io/retrofit/)
 * [Coil](https://coil-kt.github.io/coil/)
 * [Timber](https://github.com/JakeWharton/timber)
@@ -23,17 +20,3 @@ ArchiMain is a sample android app which show the usage of repository pattern. It
 
 Used api :
 [Movie-db](https://developers.themoviedb.org/3/)
-
-## Plan for next iteration but to eventually forget
-* [Splash Screen](https://developer.android.com/develop/ui/views/launch/splash-screen)
-
-
-## In a galaxy far far away
-* Use scoped storage: https://medium.com/better-programming/android-scoped-storage-demystified-3024a062ba24
-* Activity result api
-
-
-##Up Next
-* *TDD(on going)
-* CTA to open the detail movie.
-* Option to add CTA for tv also with its api/data logic.
